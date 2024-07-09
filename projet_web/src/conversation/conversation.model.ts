@@ -1,10 +1,10 @@
-import { Field, Int, ObjectType } from "@nestjs/graphql";
+import { Field, ID, Int, ObjectType } from "@nestjs/graphql";
 import { Message } from "src/message/message.model";
 
 
 @ObjectType()
 export class Conversation {
-    @Field()
+    @Field(type => ID)
     id: String;
 
     @Field()
@@ -13,8 +13,8 @@ export class Conversation {
     @Field()
     receiverId: String;
 
-    @Field(type => [Message])
-    comment: Message[];
+    @Field(type => [Message], {nullable: true})
+    comment?: Message[];
 
     @Field()
     createdAt: Date
