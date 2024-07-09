@@ -1,5 +1,6 @@
 version: '3.8'
 services:
+
   redis:
     image: redis:latest
     container_name: redis_server
@@ -22,5 +23,17 @@ services:
     volumes:
       - .:/usr/src/app
       
+  postgres:
+    image: postgres:16.3
+    restart: always
+    environment:
+      - POSTGRES_USER=myuser
+      - POSTGRES_PASSWORD=mypassword
+      - POSTGRES_DB=projetweb
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    ports:
+      - '5432:5432'
 volumes:
+  postgres:
   redis_data:

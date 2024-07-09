@@ -4,8 +4,8 @@ import { Message } from "src/message/message.model";
 
 @ObjectType()
 export class User {
-    @Field(type => Int)
-    id: number;
+    @Field()
+    id: String;
 
     @Field(type => [Message])
     comment: Message[];

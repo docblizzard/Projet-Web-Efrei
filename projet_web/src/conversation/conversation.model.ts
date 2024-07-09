@@ -4,8 +4,8 @@ import { Message } from "src/message/message.model";
 
 @ObjectType()
 export class Conversation {
-    @Field(type => Int)
-    id: number;
+    @Field()
+    id: String;
 
     @Field()
     userId: String;
@@ -15,9 +15,6 @@ export class Conversation {
 
     @Field(type => [Message])
     comment: Message[];
-
-    @Field()
-    conversationId: String;
 
     @Field()
     createdAt: Date

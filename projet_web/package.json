@@ -17,7 +17,8 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "prisma": "prisma"
   },
   "dependencies": {
     "@apollo/server": "^4.10.4",
@@ -30,6 +31,7 @@
     "bullmq": "^5.8.4",
     "graphql": "^16.9.0",
     "ioredis": "^5.4.1",
+    "prisma": "^5.16.1",
     "reflect-metadata": "^0.2.0",
     "rxjs": "^7.8.1"
   },
