@@ -35,10 +35,10 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
-## Useful commands
+# Useful commands
 generate controller
 ```
-nest generate controller "controller-name" 
+nest generate controller "controller-name"
 ```
 generate module
 ```
@@ -47,6 +47,33 @@ nest generate module "module-name"
 generate service
 ```
 nest generate service "service-name"
+```
+
+# Commandes Prisma
+
+## Automatiser relation via prisma
+
+```
+npm run prisma format
+
+```
+
+## Génerer types codegen
+
+```
+npm run generate
+```
+
+## Apply migrations from Prisma
+
+```
+npm run prisma migrate dev --name init
+```
+
+## Reset all rows from Database
+
+```
+npm run prisma migrate reset
 ```
 
 ## License

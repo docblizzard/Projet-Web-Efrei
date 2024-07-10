@@ -9,16 +9,20 @@ import { join } from 'path';
 import { ResultModule } from './result/result.module';
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
+import { ConversationModule } from './conversation/conversation.module';
+import { MessageModule } from './message/message.module';
 
 @Module({
   imports: [HealthCheckModule,
     ResultModule,
     UserModule,
     AuthModule,
+    ConversationModule,
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
     }),
+    MessageModule,
   ],
   controllers: [AppController, HealthCheckController],
   providers: [AppService ],

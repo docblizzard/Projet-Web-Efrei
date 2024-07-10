@@ -14,24 +14,25 @@ datasource db {
 }
 
 model User {
-  id                    String         @id @unique @default(uuid())
-  username              String         @unique
-  password              String
-  conversations         Conversation[] @relation("UserConversations")
-  receivedConversations Conversation[] @relation("ReceiverConversations")
-  sentmessage           Message[]      @relation("sentMessages")
-  receivedmessage       Message[]      @relation("receivedMessage")
+  id              String         @id @unique @default(uuid())
+  username        String         @unique
+  password        String
+  conversations   Conversation[] @relation("UserConversations")
+  conversations2  Conversation[] @relation("UserConversations2")
+  sentmessage     Message[]      @relation("sentMessages")
+  receivedmessage Message[]      @relation("receivedMessage")
 }
 
 model Conversation {
-  id         String    @id @unique @default(uuid())
-  user       User      @relation("UserConversations", fields: [userId], references: [id])
-  userId     String
-  receiver   User      @relation("ReceiverConversations", fields: [receiverId], references: [id])
-  receiverId String
-  messages   Message[]
-  createdAt  DateTime  @default(now())
-  updatedAt  DateTime  @updatedAt
+  id        String    @id @unique @default(uuid())
+  user1     User      @relation("UserConversations", fields: [user1Id], references: [id])
+  user1Id   String
+  user2     User      @relation("UserConversations2", fields: [user2Id], references: [id])
+  user2Id   String
+  messages  Message[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
 }
 
 model Message {

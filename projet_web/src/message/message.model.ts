@@ -1,4 +1,4 @@
-import { Field, ID, Int, ObjectType } from "@nestjs/graphql"
+import { Field, ID, InputType, Int, ObjectType } from "@nestjs/graphql"
 
 
 @ObjectType()
@@ -7,20 +7,48 @@ export class Message {
     id: String;
 
     @Field()
-    userId: String;
+    userId: string;
 
     @Field()
-    receiverId: String;
+    receiverId: string;
 
     @Field()
-    message: String;
+    message: string;
 
     @Field()
-    conversationId: String;
+    conversationId: string;
 
     @Field()
     createdAt: Date
 
     @Field()
     updatedAt: Date
+}
+
+@InputType()
+export class createMessageInput{
+    @Field()
+    conversationId: string;
+
+    @Field()
+    userId: string;
+
+    @Field()
+    receiverId: string;
+
+    @Field()
+    message: string;
+}
+
+@ObjectType()
+export class createMessageResponse {
+    @Field()
+    code: Number
+
+    @Field({nullable: true})
+    message: string
+
+    @Field({nullable: true})
+    messageSent?: Message
+
 }

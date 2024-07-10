@@ -30,6 +30,12 @@ type Conversation {
   updatedAt: DateTime!
 }
 
+type createConversationResponse {
+  code: Float!
+  message: String!
+  conversation: Conversation
+}
+
 type User {
   id: ID!
   username: String!
@@ -39,6 +45,12 @@ type User {
 
 type JWTToken {
   token: String!
+}
+
+type SignInResponse {
+  code: Float!
+  message: String!
+  token: JWTToken
 }
 
 type Query {
@@ -53,10 +65,16 @@ input JWTTokenInput {
 
 type Mutation {
   createUser(data: CreateUserInput!): User
-  signIn(data: CreateUserInput!): JWTToken
+  signIn(data: CreateUserInput!): SignInResponse
+  createPost(data: createConversationInput!): createConversationResponse
 }
 
 input CreateUserInput {
   username: String!
   password: String!
+}
+
+input createConversationInput {
+  senderUsername: String!
+  receiverUsername: String!
 }

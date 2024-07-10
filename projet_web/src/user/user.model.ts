@@ -24,7 +24,7 @@ export class User {
 export class CreateUserInput {
     @Field()
     username: string;
-  
+
     @Field()
     password: string;
 }
@@ -39,4 +39,34 @@ export class JWTToken {
 export class JWTTokenInput {
     @Field()
     token: string
+}
+
+@ObjectType()
+export class SignInResponse{
+    @Field()
+    code: number
+    @Field()
+    message: String
+    @Field({nullable: true})
+    token?: JWTToken
+}
+
+@ObjectType()
+export class CreateUserResponse{
+    @Field()
+    code: number
+    @Field()
+    message: String
+}
+
+@ObjectType()
+export class GetUserResponse {
+    @Field()
+    code: number
+
+    @Field()
+    message: string
+
+    @Field({nullable: true})
+    user?: User
 }
