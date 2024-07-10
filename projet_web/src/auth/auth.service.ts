@@ -19,13 +19,13 @@ export class AuthService {
       const token = await this.jwtService.signAsync(payload)
       return {
         code: 200,
-        message: 'User logged in',
+        response: 'User logged in',
         token: {token: token}
         };
     } catch(e){
       return {
             code: 503,
-            message: 'Unexpected Error: ' + e,
+            response: 'Unexpected Error: ' + e,
             token: null
           }
         }
@@ -35,4 +35,5 @@ export class AuthService {
     const user = await this.jwtService.decode(token.token)
 		return user
 	}
+  
 }

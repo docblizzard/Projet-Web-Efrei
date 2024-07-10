@@ -1,12 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'prisma/prisma.service';
-import { createMessageInput, createMessageResponse } from './message.model';
+import { createMessageInput, createMessageResponse, getMessagesRes } from './message.model';
 import { ConversationService } from 'src/conversation/conversation.service';
 
 @Injectable()
 export class MessageService {
     constructor( private prisma: PrismaService,
-        private conversation: ConversationService
     ){}
 
     async createMessage(message: createMessageInput): Promise <createMessageResponse>{
@@ -23,12 +22,31 @@ export class MessageService {
                 }});
             return {
                 code: 200,
-                message: 'Message created',
+                response: 'Message created',
+                messageSent: newMessage
             }
         } catch(e){
             return {
                 code: 500,
-                message: 'Unexpected error: ' + e.message
+                response: 'Unexpected error: ' + e.message
+            }
+        }
+    }
+
+    async getMessageFromConv(conversationId: string): Promise <getMessagesRes> {
+        try {
+            const messages = await this.prisma.message.findMany({
+                where: { conversationId: conversationId }
+            })
+            return {
+                code: 200,
+                response: 'Message created',
+                messages: messages
+            }
+        } catch(e){
+            return {
+                code: 500,
+                response: 'Unexpected Error: ' + e,
             }
         }
     }

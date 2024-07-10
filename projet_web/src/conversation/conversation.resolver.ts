@@ -1,4 +1,4 @@
-import { Args, Mutation, Resolver } from "@nestjs/graphql";
+import { Args, Mutation, Query, Resolver } from "@nestjs/graphql";
 import { ConversationService } from "./conversation.service";
 import { createConversationInput, createConversationResponse } from "./conversation.model";
 
@@ -8,7 +8,17 @@ export class ConversationResolver {
     constructor(private conversationService: ConversationService){}
 
     @Mutation( returns => createConversationResponse, {nullable: true})
-    async createPost(@Args('data') data: createConversationInput){
-        return this.conversationService.createPost(data)
+    async createConversation(@Args('data') data: createConversationInput){
+        return this.conversationService.createConversation(data);
+    }
+
+    @Query(returns => createConversationResponse, {nullable: true})
+    async getConversation(@Args('data') data: string){
+        return this.conversationService.getConversation(data);
+    }
+
+    @Query(returns => createConversationResponse, {nullable: true})
+    async getConversationsUser(@Args('data') data: string){
+        return this.conversationService.getConversationsUser(data);
     }
 }

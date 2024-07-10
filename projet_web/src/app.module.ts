@@ -18,11 +18,11 @@ import { MessageModule } from './message/message.module';
     UserModule,
     AuthModule,
     ConversationModule,
+    MessageModule,
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
     }),
-    MessageModule,
   ],
   controllers: [AppController, HealthCheckController],
   providers: [AppService ],

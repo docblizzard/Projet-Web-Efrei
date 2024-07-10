@@ -46,9 +46,21 @@ export class createMessageResponse {
     code: Number
 
     @Field({nullable: true})
-    message: string
+    response: string
 
     @Field({nullable: true})
     messageSent?: Message
 
+}
+
+@ObjectType()
+export class getMessagesRes{
+    @Field()
+    code: Number
+
+    @Field({nullable: true})
+    response: string
+
+    @Field(() => [Message], { nullable: true })
+    messages?: Message[]
 }

@@ -46,7 +46,7 @@ export class SignInResponse{
     @Field()
     code: number
     @Field()
-    message: String
+    response: String
     @Field({nullable: true})
     token?: JWTToken
 }

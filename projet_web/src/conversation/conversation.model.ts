@@ -8,13 +8,13 @@ export class Conversation {
     id: String;
 
     @Field()
-    userId: string;
+    user1Id: string;
 
     @Field()
-    receiverId: string;
+    user2Id: string;
 
     @Field(type => [Message], {nullable: true})
-    comment?: Message[];
+    messages?: Message[];
 
     @Field()
     createdAt: Date
@@ -37,8 +37,8 @@ export class createConversationResponse {
     code: Number
 
     @Field()
-    message: String
+    response: String
 
-    @Field({ nullable: true })
-    conversation?: Conversation
+    @Field(() => [Conversation], { nullable: true })
+    conversation?: Conversation[]
 }
