@@ -58,12 +58,6 @@ npm run prisma format
 
 ```
 
-## Génerer types codegen
-
-```
-npm run generate
-```
-
 ## Apply migrations from Prisma
 
 ```

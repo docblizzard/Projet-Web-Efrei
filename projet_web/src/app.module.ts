@@ -21,7 +21,7 @@ import { MessageModule } from './message/message.module';
     MessageModule,
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
-      autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
+      autoSchemaFile: join(process.cwd(), '../schema.gql'),
     }),
   ],
   controllers: [AppController, HealthCheckController],

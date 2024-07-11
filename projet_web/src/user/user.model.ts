@@ -1,8 +1,8 @@
 import { Field, ID, InputType, Int, ObjectType } from "@nestjs/graphql";
 import { Token } from "graphql";
 import { first } from "rxjs";
-import { Conversation } from "src/conversation/conversation.model";
-import { Message } from "src/message/message.model";
+import { Conversation } from "../conversation/conversation.model";
+import { Message } from "../message/message.model";
 
 @ObjectType()
 export class User {
