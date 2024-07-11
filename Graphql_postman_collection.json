@@ -1,0 +1,211 @@
+{
+	"info": {
+		"_postman_id": "bd42d7a2-f9b5-41e3-8cb8-9a28a748816e",
+		"name": "Graphql requests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27468878",
+		"_collection_link": "https://projet-web-7548.postman.co/workspace/Projet-web-Workspace~f5d190b6-c5e0-49fc-a58b-87b0d64627a1/collection/27468878-bd42d7a2-f9b5-41e3-8cb8-9a28a748816e?action=share&source=collection_link&creator=27468878"
+	},
+	"item": [
+		{
+			"name": "Sign in User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation SignIn {\r\n    signIn(data: { username: \"docblizzard\", password: \"123\" }) {\r\n        code\r\n        response\r\n        token {\r\n            token\r\n        }\r\n    }\r\n}\r\n",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/graphql",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation CreateUser {\r\n    createUser(data: { username: \"docblizzard2\", password: \"123\" }) {\r\n        id\r\n        username\r\n    }\r\n}\r\n",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/graphql",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Conversation",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "\r\nmutation CreateConversation($senderUsername: String!, $receiverUsername: String!) {\r\n        createConversation(data :{senderUsername: $senderUsername, receiverUsername: $receiverUsername}) {\r\n        conversation {\r\n          id\r\n        }\r\n        response\r\n        code\r\n    }\r\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/graphql",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Message from conv",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query GetMessageFromConv {\r\n    getMessageFromConv(data: \"1b45d732-610f-4d53-a63d-666e5d2fa2e7\") {\r\n        code\r\n        response\r\n        messages {\r\n            id\r\n            message\r\n            createdAt\r\n            userId\r\n            receiverId\r\n        }\r\n    }\r\n}\r\n",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/graphql",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get user by Id",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query GetUserById {\r\n    getUserById(id: \"b27c11fd-88dd-4834-aa97-45440231ee01\") {\r\n        id\r\n        username\r\n    }\r\n}\r\n",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/graphql",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Message",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation CreateMessage {\r\n    createMessage(\r\n        data: {\r\n            conversationId: \"1b45d732-610f-4d53-a63d-666e5d2fa2e7\"\r\n            userId: \"4f221279-57cb-4e8c-bca7-0f997a966988\"\r\n            message: \"Hello, nice to meet ya\"\r\n            receiverId: \"b27c11fd-88dd-4834-aa97-45440231ee01\"\r\n        }\r\n    ) {\r\n        code\r\n        response\r\n        messageSent {\r\n            message\r\n            createdAt\r\n        }\r\n    }\r\n}\r\n",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/graphql",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Message from Conv",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query GetMessageFromConv {\r\n    getMessageFromConv(data: \"1b45d732-610f-4d53-a63d-666e5d2fa2e7\") {\r\n        code\r\n        response\r\n        messages {\r\n            id\r\n            message\r\n            createdAt\r\n            userId\r\n            receiverId\r\n        }\r\n    }\r\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/graphql",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all conversations from User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query GetConversationsUser {\r\n    getConversationsUser(data: \"b27c11fd-88dd-4834-aa97-45440231ee01\") {\r\n        code\r\n        response\r\n        conversation {\r\n            id\r\n            user1Id\r\n            user2Id\r\n            createdAt\r\n            updatedAt\r\n        }\r\n    }\r\n}\r\n",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/graphql",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
