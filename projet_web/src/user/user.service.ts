@@ -9,9 +9,21 @@ export class UserService {
 
     async getUser(userWhereUniqueInput: Prisma.UserWhereUniqueInput):
     Promise<User | null > {
-        return this.prisma.user.findUnique({
+        return await this.prisma.user.findUnique({
             where: userWhereUniqueInput,
         });
+    }
+    // Filter the user that is already connected
+    async getAllUser(username: string):
+    Promise<User[] | null > {
+        const users = await this.prisma.user.findMany({
+            where :{
+                username: {
+                    not: username
+                }
+            }
+        });
+        return users
     }
 
     async createUser(data: Prisma.UserCreateInput): Promise<User>{

@@ -14,6 +14,23 @@ export class ConversationService {
 			try {
 				const userSender = await this.usersService.getUser({username: data.senderUsername});
 				const userReceiver = await this.usersService.getUser({username: data.receiverUsername});
+				
+				const existingConv = await this.prisma.conversation.findFirst({
+					where: {
+						OR: [
+						  { user1Id: userSender.id, user2Id: userReceiver.id },
+						  { user1Id: userReceiver.id, user2Id: userSender.id },
+						],
+					  },
+				})
+				if (existingConv) {
+					return {
+					  code: 409,
+					  response: 'Conversation already exists between these users',
+					  conversation: [existingConv],
+					};
+				  }
+
 				const conversation = await this.prisma.conversation.create({
 					data: {
 						user1Id: userSender.id,

@@ -13,7 +13,7 @@ export class User {
     username: String;
 
     @Field(type => [Message], {nullable: true})
-    comment?: Message[];
+    message?: Message[];
     
     @Field(type => [Conversation], {nullable: true})
     conversation?: Conversation[];
